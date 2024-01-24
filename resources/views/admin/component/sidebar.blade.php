@@ -34,7 +34,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="">
+            <a href="{{ route('rak.index') }}" class="">
                 <div class="parent-icon"><i class='bx bx-cabinet'></i>
                 </div>
                 <div class="menu-title">Rak</div>

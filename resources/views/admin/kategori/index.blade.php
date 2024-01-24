@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <div>
-                <h3 class="card-title"><i class='bx bx-category'></i> Data Kategori</h3>
+                <h3 class="card-title"><i class='bx bx-category'></i>Data Kategori</h3>
             </div>
             <div class="table-responsive">
                 <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap5">
@@ -12,7 +12,7 @@
                         <div class="col-sm-12 col-md-6">
                             <div>
                                 <a href="{{ route('kategori.create') }}" class="btn btn-primary"><i
-                                        class='bx bx-edit'></i>Tambahkan Kategori</a>
+                                    class='bx bx-add-to-queue'></i>Tambahkan Kategori</a>
                             </div>
                             <br>
                         </div>

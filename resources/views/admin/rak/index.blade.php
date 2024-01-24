@@ -4,15 +4,15 @@
     <div class="card">
         <div class="card-body">
             <div>
-                <h3 class="card-title"><i class='bx bx-buildings'></i> Data Penerbit</h3>
+                <h3 class="card-title"><i class='bx bx-cabinet'></i>Data Rak</h3>
             </div>
             <div class="table-responsive">
                 <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap5">
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
                             <div>
-                                <a href="{{ route('penerbit.create') }}" class="btn btn-primary"><i
-                                    class='bx bx-add-to-queue'></i>Tambahkan Penerbit</a>
+                                <a href="{{ route('rak.create') }}" class="btn btn-primary"><i
+                                        class='bx bx-add-to-queue'></i>Tambahkan Rak</a>
                             </div>
                             <br>
                         </div>
@@ -44,8 +44,7 @@
                                     <tr>
                                         <th class="col-lg-1">No</th>
                                         <th>Kode</th>
-                                        <th>Penerbit</th>
-                                        <th>Telepon</th>
+                                        <th>Rak</th>
                                         <th class="col-lg-2">Aksi</th>
                                     </tr>
                                 </thead>
@@ -72,7 +71,7 @@
                 className: 'text-center',
                 targets: ['_all']
             }, ],
-            ajax: '{{ route('penerbit.dt') }}',
+            ajax: '{{ route('rak.dt') }}',
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -88,12 +87,6 @@
                 {
                     data: 'nama',
                     name: 'nama',
-                    orderable: true,
-                    searchable: true
-                },
-                {
-                    data: 'telepon',
-                    name: 'telepon',
                     orderable: true,
                     searchable: true
                 },

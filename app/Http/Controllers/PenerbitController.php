@@ -69,6 +69,7 @@ class PenerbitController extends Controller
     public function destroy(string $id)
     {
         $hapus  = Penerbit::del($id);
+        return redirect('penerbit')->with('msgDelete', 'Penerbit berhasil dihapus');
     }
 
     public function dtPenerbit()
@@ -83,9 +84,9 @@ class PenerbitController extends Controller
                 <a class="btn btn-primary btn-md"
                 href=" ' . route('penerbit.edit', $data->id)  . '"><i class="bx bx-edit"></i>Edit</a>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal"><i class="bx bx-trash"></i>Delete</button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal' . $data->id . '"><i class="bx bx-trash"></i>Delete</button>
                 <!-- Modal -->
-                <div class="modal fade" id="exampleVerticallycenteredModal" tabindex="-1" style="display: none;" aria-hidden="true">
+                <div class="modal fade" id="exampleVerticallycenteredModal' . $data->id . '" tabindex="-1" style="display: none;" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
