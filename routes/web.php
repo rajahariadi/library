@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.index');
 });
+
+Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
+
+Route::get('/kategori/dt', [KategoriController::class,'dtKategori'])->name('kategori.dt');
+
+Route::resource('kategori', KategoriController::class);
