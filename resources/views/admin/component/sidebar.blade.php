@@ -27,7 +27,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="">
+            <a href="{{ route('penerbit.index') }}" class="">
                 <div class="parent-icon"><i class='bx bx-buildings'></i>
                 </div>
                 <div class="menu-title">Penerbit</div>

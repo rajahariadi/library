@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PenerbitController;
+use App\Models\Penerbit;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +24,7 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
 
 Route::get('/kategori/dt', [KategoriController::class,'dtKategori'])->name('kategori.dt');
+Route::get('/penerbit/dt', [PenerbitController::class,'dtPenerbit'])->name('penerbit.dt');
 
 Route::resource('kategori', KategoriController::class);
+Route::resource('penerbit', PenerbitController::class);
