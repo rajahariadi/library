@@ -41,7 +41,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="">
+            <a href="{{ route('member.index') }}" class="">
                 <div class="parent-icon"><i class='bx bx-group'></i>
                 </div>
                 <div class="menu-title">Member</div>
