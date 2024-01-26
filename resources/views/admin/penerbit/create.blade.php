@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <div>
-                <h3 class="card-title"><i class='bx bx-category'></i> Tambahkan Penerbit</h3>
+                <h3 class="card-title"><i class='bx bx-buildings'></i> Tambahkan Penerbit</h3>
             </div>
             <div class="row">
                 <div class="col-md-6">

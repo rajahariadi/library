@@ -5,6 +5,7 @@
 <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+<script src="{{ asset('assets/plugins/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <script src="{{ asset('assets/plugins/chartjs/js/Chart.min.js') }}"></script>
@@ -16,6 +17,8 @@
 <script src="{{ asset('assets/js/index.js') }}"></script>
 <!--app JS-->
 <script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('assets/js/script.js') }}"></script>
 <!--Data Table-->
-<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+
 @yield('myscript')

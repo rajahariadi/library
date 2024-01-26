@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <div>
-                <h3 class="card-title"><i class='bx bx-category'></i>Edit Kategori</h3>
+                <h3 class="card-title"><i class='bx bx-group'></i>Edit Member</h3>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -64,7 +64,7 @@
                         <input hidden type="text" class="form-control" id="defaultFormControlInput" placeholder="Status"
                             aria-describedby="defaultFormControlHelp" name="status" value="Aktif">
                         <a href="{{ route('member.index') }}" class="btn btn-secondary">Cancel</a>
-                        <button type="submit" class="btn btn-primary">Tambahkan Member</button>
+                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                     </form>
                 </div>
             </div>

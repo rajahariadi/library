@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            <img src="{{ asset('assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
         </div>
         <div>
             <h4 class="logo-text">Amdash</h4>
@@ -49,7 +49,7 @@
         </li>
         <li class="menu-label">Data Buku</li>
         <li>
-            <a href="#" class="">
+            <a href="{{ route('buku.index') }}" class="">
                 <div class="parent-icon"><i class='bx bx-book'></i>
                 </div>
                 <div class="menu-title">Buku</div>

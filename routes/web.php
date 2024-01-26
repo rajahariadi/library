@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\MemberController;
@@ -27,8 +28,10 @@ Route::get('/kategori/dt', [KategoriController::class,'dtKategori'])->name('kate
 Route::get('/penerbit/dt', [PenerbitController::class,'dtPenerbit'])->name('penerbit.dt');
 Route::get('/rak/dt', [RakController::class,'dtRak'])->name('rak.dt');
 Route::get('/member/dt', [MemberController::class,'dtMember'])->name('member.dt');
+Route::get('/buku/dt', [BukuController::class,'dtBuku'])->name('buku.dt');
 
 Route::resource('kategori', KategoriController::class);
 Route::resource('penerbit', PenerbitController::class);
 Route::resource('rak', RakController::class);
 Route::resource('member', MemberController::class);
+Route::resource('buku', BukuController::class);
