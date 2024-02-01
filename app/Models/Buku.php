@@ -64,4 +64,42 @@ class Buku extends Model
     {
         return Buku::destroy($id);
     }
+
+    public static function selById($id)
+    {
+        return Buku::find($id);
+    }
+
+    public static function pinjam($id)
+    {
+        $dataBuku = Buku::selById($id);
+        $stokLama = $dataBuku->stok;
+
+        if ($stokLama > 0) {
+            $stokBaru = $stokLama - 1;
+            $dataBuku->update(['stok' => $stokBaru]);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function kembaliSingleBook($id)
+    {
+        $dataBuku = Buku::selById($id);
+        $stokLama = $dataBuku->stok;
+
+        $stokBaru = $stokLama + 1;
+        $dataBuku->update(['stok' => $stokBaru]);
+    }
+
+    public static function kembali($peminjamanId)
+    {
+        $listPeminjaman = ListPeminjaman::where('peminjaman_id', $peminjamanId)->get();
+
+        foreach ($listPeminjaman as $item) {
+            $bukuId = $item->buku_id;
+            Buku::kembaliSingleBook($bukuId);
+        }
+    }
 }

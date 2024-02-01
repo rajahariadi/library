@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PenerbitRequest;
+use App\Models\Buku;
+use App\Models\Kategori;
 use App\Models\Penerbit;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -12,10 +14,15 @@ class PenerbitController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Penerbit::select();
-        return view ('admin.penerbit.index');
+        $data['kategori'] = Kategori::select();
+        if(isset($_GET['kode_kategori'])){
+            $url = $request->get('kode_kategori');
+            $data['buku'] = Buku::where('kategori_id', $url)->get()->toArray();
+        }
+        // dd($data['buku']);
+        return view ('admin.penerbit.index',compact('data'));
     }
 
     /**

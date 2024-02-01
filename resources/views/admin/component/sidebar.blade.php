@@ -56,7 +56,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="">
+            <a href="{{ route('peminjaman.index') }}" class="">
                 <div class="parent-icon"><i class='bx bx-transfer'></i>
                 </div>
                 <div class="menu-title">Peminjaman</div>

@@ -12,7 +12,7 @@
                         <div class="col-sm-12 col-md-6">
                             <div>
                                 <a href="{{ route('penerbit.create') }}" class="btn btn-primary"><i
-                                    class='bx bx-add-to-queue'></i>Tambahkan Penerbit</a>
+                                        class='bx bx-add-to-queue'></i>Tambahkan Penerbit</a>
                             </div>
                             <br>
                         </div>
@@ -55,6 +55,27 @@
                     </div>
                 </div>
             </div>
+        </div>
+        {{-- @dump($data) --}}
+        <div class="card-body">
+            <form action="{{ route('penerbit.index') }}" method="GET">
+                <select name="kode_kategori" id="">
+                    <option value="0" selected>-- Pilih --</option>
+                    @foreach ($data['kategori'] as $item)
+                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                    @endforeach
+                </select>
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <ul>
+                    @if (isset($data['buku']))
+                        @foreach ($data['buku'] as $buku)
+                            <li>{{ $buku['judul'] }}</li>
+                        @endforeach
+                    @endif
+                    {{-- <li>List</li>
+                    <li>Buku</li> --}}
+                </ul>
+            </form>
         </div>
     </div>
 @endsection
