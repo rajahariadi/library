@@ -52,7 +52,7 @@
                                         <th class="col-lg-2">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                {{-- <tbody>
                                     @foreach ($data as $peminjaman)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
@@ -96,7 +96,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                </tbody>
+                                </tbody> --}}
                             </table>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
     </div>
 @endsection
 {{-- DATA DARI DATA TABLE --}}
-{{-- @section('myscript')
+@section('myscript')
     <script>
         var dtTable = $('#myTable').DataTable({
             processing: true,
@@ -127,51 +127,52 @@
                     searchable: false
                 },
                 {
-                    data: 'kategoris.nama',
-                    name: 'kategoris.nama',
+                    data: 'members.nama',
+                    name: 'members.nama',
                     orderable: true,
                     searchable: true
                 },
                 {
-                    data: 'penerbits.nama',
-                    name: 'penerbits.nama',
+                    data: 'buku_judul',
+                    name: 'buku_judul',
                     orderable: true,
                     searchable: true
                 },
                 {
-                    data: 'raks.nama',
-                    name: 'raks.nama',
+                    data: 'tgl_pinjam',
+                    name: 'tgl_pinjam',
                     orderable: true,
                     searchable: true
                 },
                 {
-                    data: 'judul',
-                    name: 'judul',
+                    data: 'tgl_tenggat',
+                    name: 'tgl_tenggat',
                     orderable: true,
                     searchable: true
                 },
                 {
-                    data: 'pengarang',
-                    name: 'pengarang',
-                    orderable: true,
-                    searchable: true
-                },
-                {
-                    data: 'stok',
-                    name: 'stok',
-                    orderable: true,
-                    searchable: true
-                },
-                {
-                    data: 'gambar',
-                    name: 'gambar',
+                    data: 'status',
+                    name: 'status',
                     orderable: true,
                     searchable: true,
                     render: function(data, type, full, meta) {
-                        return '<a href="{{ asset('storage/') }}/' + data +
-                            '"><img src="{{ asset('storage/') }}/' + data + '"alt="' + full.nama +
-                            '" style="max-width:100px; max-height:100px;"/></a>';
+                        if (data === 'Sudah Dikembalikan') {
+                            return '<span class="badge bg-info">' + data + '</span>';
+                        } else {
+                            if (data === 'Dipinjam') {
+                                return '<span class="badge bg-secondary">' + data + '</span>';
+                            } else {
+                                return '<span class = "badge bg-danger" >' + data + '</span>';
+
+                            }
+                        }
                     }
+                },
+                {
+                    data: 'tgl_kembali',
+                    name: 'tgl_kembali',
+                    orderable: true,
+                    searchable: true
                 },
                 {
                     data: 'aksi',
@@ -182,4 +183,4 @@
             ],
         });
     </script>
-@endsection --}}
+@endsection

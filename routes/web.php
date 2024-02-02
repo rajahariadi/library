@@ -30,6 +30,7 @@ Route::get('/penerbit/dt', [PenerbitController::class,'dtPenerbit'])->name('pene
 Route::get('/rak/dt', [RakController::class,'dtRak'])->name('rak.dt');
 Route::get('/member/dt', [MemberController::class,'dtMember'])->name('member.dt');
 Route::get('/buku/dt', [BukuController::class,'dtBuku'])->name('buku.dt');
+Route::get('/peminjaman/dt', [PeminjamanController::class,'dtPeminjaman'])->name('peminjaman.dt');
 
 Route::resource('kategori', KategoriController::class);
 Route::resource('penerbit', PenerbitController::class);

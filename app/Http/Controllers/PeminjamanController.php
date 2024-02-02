@@ -8,6 +8,7 @@ use App\Models\Member;
 use App\Models\Peminjaman;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class PeminjamanController extends Controller
 {
@@ -113,5 +114,57 @@ class PeminjamanController extends Controller
         $hapuslistPeminjaman =  ListPeminjaman::del($id);
 
         return redirect('peminjaman')->with('msgDelete', 'Peminjaman berhasil dihapus');
+    }
+
+    public function dtPeminjaman()
+    {
+        $data = Peminjaman::query()->with(['members', 'bukus']);
+        return DataTables::of($data)
+            ->addIndexColumn()
+            ->addColumn('buku_judul', function ($data) {
+                $bukus = $data->bukus;
+                $judul = '';
+                foreach ($bukus as $buku) {
+                    $judul .= $buku->judul . ', ';
+                }
+                return rtrim($judul, ', ');
+            })
+            ->addColumn('aksi', function ($data) {
+                $button = '';
+
+                if (is_null($data->tgl_kembali)) {
+                    $button .= '<a href="' . route('peminjaman.show', $data->id) . '" class="btn btn-success btn-md m-1"> Kembalikan Buku</a>';
+                }
+
+                $button .= '<form action="' . route('peminjaman.destroy', $data->id) . '" method="POST">
+                ' . @csrf_field() . '
+                ' . @method_field('DELETE') . '
+                    <a class="btn btn-primary btn-md" href="' . route('peminjaman.edit', $data->id) . '"><i class="bx bx-edit"></i>Edit</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal' . $data->id . '">
+                        <i class="bx bx-trash"></i>Delete
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleVerticallycenteredModal' . $data->id . '" tabindex="-1" style="display: none;" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Konfirmasi Hapus</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">Apakah anda yakin ingin menghapus peminjaman ini ?</div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>';
+
+                return $button;
+            })
+            ->rawColumns(['aksi'])
+            ->toJson();
     }
 }

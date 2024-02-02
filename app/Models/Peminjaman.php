@@ -17,12 +17,17 @@ class Peminjaman extends Model
         'status'
     ];
 
-    public function listpeminjaman()
+    public function bukus()
+    {
+        return $this->hasManyThrough(Buku::class, ListPeminjaman::class, 'peminjaman_id', 'id', 'id', 'buku_id');
+    }
+
+    public function listPeminjaman()
     {
         return $this->hasMany(ListPeminjaman::class, 'peminjaman_id');
     }
 
-    public function member()
+    public function members()
     {
         return $this->belongsTo(Member::class, 'member_id');
     }
@@ -31,14 +36,14 @@ class Peminjaman extends Model
     {
         $tgl_kembali = $this->tgl_kembali;
         if (isset($tgl_kembali)) {
-            return '<span class="badge bg-info">Sudah Dikembalikan</span>';
+            return 'Sudah Dikembalikan';
         } else {
             $tgl_tenggat = $this->tgl_tenggat;
             $tgl_sekarang = Carbon::now()->toDateString();
             if ($tgl_sekarang <= $tgl_tenggat) {
-                return '<span class="badge bg-secondary">Dipinjam</span>';
+                return 'Dipinjam';
             } else {
-                return '<span class="badge bg-danger">Terlambat</span>';
+                return 'Terlambat';
             }
         }
     }
@@ -67,5 +72,4 @@ class Peminjaman extends Model
     {
         return Buku::pinjam($data['buku_id']);
     }
-
 }
